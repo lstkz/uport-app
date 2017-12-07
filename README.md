@@ -19,7 +19,7 @@ Challenges rules:
 
 The problem when submitting the submission via email:
 - Topcoder support must add submissions to Online Review (system for submissions), and it causes delays in the review phase.
-- Topcoder support must do manual verification if the submission is valid. They must check timestamp if it was sent before the deadline. Check if the content was not modified (e. g. google drive provide it).
+- Topcoder support must do manual verification if the submission is valid. They must check timestamp if it was sent before the deadline. Check if the content was not modified (e.g. google drive provides it).
 - Other members don't know if there were any mistakes in manual verification. They must trust Topcoder support.
 
 Solution:
@@ -35,9 +35,16 @@ Solution:
 $ yarn
 ```
 
-## Run
 
-Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a server that sends hot updates to the renderer process:
+## Run production mode
+
+```bash
+$ npm run build
+$ npm start
+```
+
+
+## Run dev mode
 
 ```bash
 $ npm run dev
@@ -66,11 +73,27 @@ To package apps with options:
 $ npm run package -- --[option]
 ```
 
-## Further commands
+## Contract setup
+Optional setup. The source file already contains valid sample data.  
 
-To run the application without packaging run
 
-```bash
-$ npm run build
-$ npm start
+Install truffle cli
+```
+npm install -g truffle
+truffle migrate --network rinkeby --compile-all --reset
+```
+Deploy contract
+```
+truffle migrate --network rinkeby --compile-all --reset
+```
+Run console
+```
+truffle console --network rinkeby 
+// get contract address
+TopCoderChallenges.address)
+// create sample challanges
+var tc = TopCoderChallenges.at(TopCoderChallenges.address)
+tc.addChallenge("Expired challenge", 1, 2, 'public rsa key')
+tc.addChallenge("Some challenge", 2, 1612504683, 'MIGJAoGBAM3CosR73CBNcJsLv5E90NsFt6qN1uziQ484gbOoule8leXHFbyIzPQRozgEpSpi\nwhr6d2/c0CfZHEJ3m5tV0klxfjfM7oqjRMURnH/rmBjcETQ7qzIISZQ/iptJ3p7Gi78X5ZMh\nLNtDkUFU9WaGdiEb+SnC39wjErmJSfmGb7i1AgMBAAE=');
+
 ```

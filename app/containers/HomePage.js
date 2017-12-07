@@ -1,11 +1,9 @@
-// @flow
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Home from '../components/Home';
+import {actions} from '../modules/auth';
 
-export default class HomePage extends Component {
-  render() {
-    return (
-      <Home />
-    );
-  }
+function mapStateToProps(state) {
+  return state.auth;
 }
+
+export default connect(mapStateToProps, actions)(Home);

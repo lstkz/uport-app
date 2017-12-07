@@ -186,6 +186,8 @@
     "electron-debug": "^1.2.0",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
+    "material-ui": "^1.0.0-beta.22",
+    "material-ui-icons": "^1.0.0-beta.17",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "3.0.0-beta.6",
@@ -194,10 +196,12 @@
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.1",
+    "redux-actions": "^2.2.1",
     "redux-thunk": "^2.2.0",
     "source-map-support": "^0.4.15",
     "truffle": "^4",
-    "truffle-hdwallet-provider": "^0.0.3"
+    "truffle-hdwallet-provider": "^0.0.3",
+    "uport-connect": "^0.7.0"
   },
   "devEngines": {
     "node": ">=7.x",
