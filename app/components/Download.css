@@ -1,0 +1,43 @@
+.container {
+  padding: 30px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.title {
+  padding: 20px;
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.buttons button {
+  margin: 0 5px;
+}
+
+.step0 {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+}

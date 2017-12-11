@@ -21,6 +21,6 @@ export function getHash(path) {
 }
 
 
-export function verifyHash(path, hash) {
-  return getHash(path) === hash;
+export async function verifyHash(path, hash) {
+  return await getHash(path) === hash;
 }

@@ -22,7 +22,11 @@ export default class Home extends Component {
             href="#/submit"
             className={styles.button}
           >Submit to challenge</Button>
-          <Button raised className={styles.button}>Download submissions</Button>
+          <Button
+            raised
+            className={styles.button}
+            href="#/download"
+          >Download submissions</Button>
         </div>}
       </div>
     );

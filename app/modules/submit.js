@@ -10,15 +10,15 @@ const {dialog} = require('electron').remote;
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const SET_CHALLENGE_ID = 'auth::SET_CHALLENGE_ID';
-export const GO_PREV_STEP = 'auth::GO_PREV_STEP';
-export const SHOW_LOADING = 'auth::SHOW_LOADING';
-export const HIDE_LOADING = 'auth::HIDE_LOADING';
-export const SHOW_ERROR = 'auth::SHOW_ERROR';
-export const CLOSE_ERROR = 'auth::CLOSE_ERROR';
-export const CHALLENGE_LOADED = 'auth::CHALLENGE_LOADED';
-export const UPLOADED = 'auth::UPLOADED';
-export const SUCCESS = 'auth::SUCCESS';
+export const SET_CHALLENGE_ID = 'submit::SET_CHALLENGE_ID';
+export const GO_PREV_STEP = 'submit::GO_PREV_STEP';
+export const SHOW_LOADING = 'submit::SHOW_LOADING';
+export const HIDE_LOADING = 'submit::HIDE_LOADING';
+export const SHOW_ERROR = 'submit::SHOW_ERROR';
+export const CLOSE_ERROR = 'submit::CLOSE_ERROR';
+export const CHALLENGE_LOADED = 'submit::CHALLENGE_LOADED';
+export const UPLOADED = 'submit::UPLOADED';
+export const SUCCESS = 'submit::SUCCESS';
 
 
 // ------------------------------------

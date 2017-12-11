@@ -203,6 +203,7 @@
     "redux-actions": "^2.2.1",
     "redux-thunk": "^2.2.0",
     "source-map-support": "^0.4.15",
+    "superagent": "^3.8.2",
     "truffle": "^4",
     "truffle-hdwallet-provider": "^0.0.3",
     "uport-connect": "^0.7.0"

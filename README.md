@@ -99,3 +99,8 @@ tc.addChallenge("Expired challenge", 1, 2, 'public rsa key')
 tc.addChallenge("Some challenge", 2, 1612504683, 'MIGJAoGBAM3CosR73CBNcJsLv5E90NsFt6qN1uziQ484gbOoule8leXHFbyIzPQRozgEpSpi\nwhr6d2/c0CfZHEJ3m5tV0klxfjfM7oqjRMURnH/rmBjcETQ7qzIISZQ/iptJ3p7Gi78X5ZMh\nLNtDkUFU9WaGdiEb+SnC39wjErmJSfmGb7i1AgMBAAE=');
 
 ```
+
+
+## Verification
+See video <url>.
+Use private key from `private.key`
