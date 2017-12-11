@@ -1,18 +1,16 @@
-// @flow weak
 import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Drawer from 'material-ui/Drawer';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import List, {ListItem, ListItemText} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import withRoot from '../components/withRoot';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     width: '100%',
   },
@@ -32,7 +30,7 @@ class App extends Component {
   openDrawer = () => this.setState({menuOpen: true});
 
   render() {
-    const {classes, login, user} = this.props;
+    const {classes, user, logout} = this.props;
     return (
       <div className={classes.root}>
         <Drawer open={this.state.menuOpen} onRequestClose={this.closeDrawer}>
@@ -50,8 +48,8 @@ class App extends Component {
                 <ListItem button>
                   <ListItemText primary="Download submissions" />
                 </ListItem>
-                <Divider/>
-                <ListItem button>
+                <Divider />
+                <ListItem button onClick={logout}>
                   <ListItemText primary="Logout" />
                 </ListItem>
               </List>
@@ -61,7 +59,7 @@ class App extends Component {
         <AppBar position="static">
           <Toolbar>
             {user && <IconButton className={classes.menuButton} color="contrast" aria-label="Menu" onClick={this.openDrawer}>
-              <MenuIcon/>
+              <MenuIcon />
             </IconButton>}
             <Typography type="title" color="inherit" className={classes.flex}>
               Topcoder blockchain
@@ -74,5 +72,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default withRoot(withStyles(styles)(App));

@@ -1,11 +1,13 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import styles from './Counter.css';
+
 const {dialog} = require('electron').remote;
 
 console.log(require('electron').remote);
-const openDialog = () => console.log(dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']}))
+
+const openDialog = () => console.log(dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']}));
 
 class Counter extends Component {
   props: {
@@ -17,7 +19,7 @@ class Counter extends Component {
   };
 
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
+    const {increment, incrementIfOdd, incrementAsync, decrement, counter} = this.props;
     return (
       <div>
         <div className={styles.backButton} data-tid="backButton">

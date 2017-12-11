@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';

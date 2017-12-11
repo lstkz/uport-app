@@ -1,6 +1,6 @@
 /* eslint flowtype-errors/show-errors: 0 */
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import {Switch, Route} from 'react-router';
 import AppContainer from './containers/AppContainer';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';

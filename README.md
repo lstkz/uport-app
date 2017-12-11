@@ -42,15 +42,15 @@ $ yarn
 ## Run production mode
 
 ```bash
-$ npm run build
-$ npm start
+$ yarn run build
+$ yarn start
 ```
 
 
 ## Run dev mode
 
 ```bash
-$ npm run dev
+$ yarn run dev
 ```
 
 ## Packaging
@@ -58,7 +58,7 @@ $ npm run dev
 To package apps for the local platform:
 
 ```bash
-$ npm run package
+$ yarn run package
 ```
 
 To package apps for all platforms:
@@ -67,13 +67,13 @@ First, refer to [Multi Platform Build](https://www.electron.build/multi-platform
 
 Then,
 ```bash
-$ npm run package-all
+$ yarn run package-all
 ```
 
 To package apps with options:
 
 ```bash
-$ npm run package -- --[option]
+$ yarn run package -- --[option]
 ```
 
 ## Contract setup
