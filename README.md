@@ -83,7 +83,6 @@ Optional setup. The source file already contains valid sample data.
 Install truffle cli
 ```
 npm install -g truffle
-truffle migrate --network rinkeby --compile-all --reset
 ```
 Deploy contract
 ```
@@ -93,7 +92,7 @@ Run console
 ```
 truffle console --network rinkeby 
 // get contract address
-TopCoderChallenges.address)
+TopCoderChallenges.address
 // create sample challanges
 var tc = TopCoderChallenges.at(TopCoderChallenges.address)
 tc.addChallenge("Expired challenge", 1, 2, 'public rsa key')

@@ -1,14 +1,13 @@
-/* eslint flowtype-errors/show-errors: 0 */
 import React from 'react';
 import {Switch, Route} from 'react-router';
 import AppContainer from './containers/AppContainer';
 import HomePage from './containers/HomePage';
-import CounterPage from './containers/CounterPage';
+import SubmitPage from './containers/SubmitPage';
 
 export default () => (
   <AppContainer>
     <Switch>
-      <Route path="/submit" component={CounterPage} />
+      <Route path="/submit" component={SubmitPage} />
       <Route path="/" component={HomePage} />
     </Switch>
   </AppContainer>
