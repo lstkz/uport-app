@@ -1,4 +1,6 @@
 import {createAction, handleActions} from 'redux-actions';
+import {encryptSubmissionData} from '../utils/encrypt';
+import waitForMined from '../utils/waitForMined';
 import {getHash} from '../utils/file-hash';
 import upload from '../utils/upload';
 import api from '../api';
@@ -16,31 +18,26 @@ export const SHOW_ERROR = 'auth::SHOW_ERROR';
 export const CLOSE_ERROR = 'auth::CLOSE_ERROR';
 export const CHALLENGE_LOADED = 'auth::CHALLENGE_LOADED';
 export const UPLOADED = 'auth::UPLOADED';
+export const SUCCESS = 'auth::SUCCESS';
 
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export const goNext = () => async (dispatch, getState) => {
-  const {step, challengeId} = getState().submit;
+export const getChallenge = () => async (dispatch, getState) => {
+  const {challengeId} = getState().submit;
   dispatch({type: SHOW_LOADING});
-  switch (step) {
-    case 0: {
-      try {
-        const result = await api.getChallenge(challengeId);
-        if (result.deadline.getTime() < Date.now()) {
-          dispatch({type: SHOW_ERROR, payload: `Challenge "${result.title}" is not active`});
-        } else {
-          dispatch({type: CHALLENGE_LOADED, payload: result});
-        }
-      } catch (e) {
-        console.log(e.stack);
-        dispatch({type: SHOW_ERROR, payload: 'Failed to get a challenge'});
-      }
-      break;
+  try {
+    const result = await api.getChallenge(challengeId);
+    if (result.deadline.getTime() < Date.now()) {
+      dispatch({type: SHOW_ERROR, payload: `Challenge "${result.title}" is not active`});
+    } else {
+      dispatch({type: CHALLENGE_LOADED, payload: result});
     }
-    // no default
+  } catch (e) {
+    console.log(e.stack);
+    dispatch({type: SHOW_ERROR, payload: 'Failed to get a challenge'});
   }
   dispatch({type: HIDE_LOADING});
 };
@@ -68,12 +65,26 @@ export const selectFile = () => async (dispatch) => {
   }
 };
 
+export const confirm = () => async (dispatch, getState) => {
+  const {uploadDetails, challengeId, challengeDetails} = getState().submit;
+  const data = encryptSubmissionData(uploadDetails, challengeDetails.publicKey);
+  const tx = await api.addSubmission(challengeId, data);
+  dispatch({type: SHOW_LOADING});
+  waitForMined(tx, {blockNumber: null}, () => {
+    // pending
+  }, () => {
+    dispatch({type: HIDE_LOADING});
+    dispatch({type: SUCCESS});
+  });
+};
+
 export const actions = {
   setChallengeId: createAction(SET_CHALLENGE_ID),
   goPrevStep: createAction(GO_PREV_STEP),
   closeError: createAction(CLOSE_ERROR),
-  goNext,
+  getChallenge,
   selectFile,
+  confirm,
 };
 
 
@@ -81,7 +92,20 @@ export const actions = {
 // Reducer
 // ------------------------------------
 
+function getDefaultState() {
+  return {
+    step: 0,
+    challengeId: null,
+    challengeDetails: null,
+    isLoading: false,
+    lastError: null,
+    error: null,
+    uploadDetails: null,
+  };
+}
+
 export default handleActions({
+  '@@router/LOCATION_CHANGE': () => getDefaultState(),
   [SET_CHALLENGE_ID]: (state, {payload: challengeId}) => ({...state, challengeId}),
   [GO_PREV_STEP]: (state) => ({...state, step: state.step - 1}),
   [SHOW_LOADING]: (state) => ({...state, isLoading: true}),
@@ -91,13 +115,6 @@ export default handleActions({
   [CLOSE_ERROR]: (state) => ({...state, error: false}),
   [CHALLENGE_LOADED]: (state, {payload: challengeDetails}) =>
     ({...state, challengeDetails, step: 1}),
-  [UPLOADED]: (state, {payload: uploadDetails}) => ({...state, uploadDetails}),
-}, {
-  step: 0,
-  challengeId: null,
-  challengeDetails: null,
-  isLoading: false,
-  lastError: null,
-  error: null,
-  uploadDetails: null,
-});
+  [UPLOADED]: (state, {payload: uploadDetails}) => ({...state, uploadDetails, step: 2}),
+  [SUCCESS]: (state) => ({...state, step: 3}),
+}, getDefaultState());

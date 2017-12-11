@@ -30,7 +30,7 @@ class App extends Component {
   openDrawer = () => this.setState({menuOpen: true});
 
   render() {
-    const {classes, user, logout} = this.props;
+    const {classes, user, logout, push} = this.props;
     return (
       <div className={classes.root}>
         <Drawer open={this.state.menuOpen} onRequestClose={this.closeDrawer}>
@@ -42,14 +42,20 @@ class App extends Component {
           >
             <div className={classes.list}>
               <List>
-                <ListItem button>
+                <ListItem button onClick={() => push('/submit')}>
                   <ListItemText primary="Submit to challenge" />
                 </ListItem>
-                <ListItem button>
+                <ListItem button onClick={() => push('/download')}>
                   <ListItemText primary="Download submissions" />
                 </ListItem>
                 <Divider />
-                <ListItem button onClick={logout}>
+                <ListItem
+                  button
+                  onClick={() => {
+                    push('/');
+                    logout();
+                  }}
+                >
                   <ListItemText primary="Logout" />
                 </ListItem>
               </List>

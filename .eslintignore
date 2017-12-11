@@ -4,6 +4,8 @@ logs
 
 # Runtime data
 pids
+migrations
+styles
 *.pid
 *.seed
 dist

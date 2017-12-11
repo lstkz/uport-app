@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import App from '../components/App';
 import {actions} from '../modules/auth';
 
@@ -8,4 +9,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(App);
+export default connect(mapStateToProps, {...actions, push})(App);

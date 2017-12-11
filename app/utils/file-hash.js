@@ -19,3 +19,8 @@ export function getHash(path) {
     });
   });
 }
+
+
+export function verifyHash(path, hash) {
+  return getHash(path) === hash;
+}

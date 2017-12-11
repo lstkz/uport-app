@@ -13,6 +13,11 @@ async function getChallenge(id) {
   };
 }
 
+function addSubmission(id, data) {
+  return contract.addSubmissionAsync(id, data);
+}
+
 export default {
   getChallenge,
+  addSubmission,
 };
