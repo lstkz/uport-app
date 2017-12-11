@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 
-function _getFullKey(publicKey) {
+function getFullKey(publicKey) {
   return `-----BEGIN RSA PUBLIC KEY-----\r\n${publicKey}\r\n-----END RSA PUBLIC KEY-----\n`;
 }
 
@@ -15,7 +15,7 @@ export function encryptSubmissionData(uploadDetails, publicKey) {
 
   let encrypted = cipher.update(JSON.stringify(uploadDetails), 'utf8', 'hex');
   encrypted += cipher.final('hex');
-  const fullKey = _getFullKey(publicKey);
+  const fullKey = getFullKey(publicKey);
   const data = {
     encryptedKey: crypto.publicEncrypt(fullKey, new Buffer(aesKey, 'hex')).toString('hex'),
     encryptedData: encrypted,
@@ -33,7 +33,7 @@ export function decryptSubmissionData(str, privateKey) {
 }
 
 export function checkKeyValid(publicKey, privateKey) {
-  const fullKey = _getFullKey(publicKey);
+  const fullKey = getFullKey(publicKey);
   const data = 'foo';
   try {
     const encrypted = crypto.publicEncrypt(fullKey, new Buffer(data)).toString('hex');

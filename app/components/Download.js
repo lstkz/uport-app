@@ -45,7 +45,7 @@ export default class Download extends Component {
   render() {
     const {
       challengeId, setChallengeId, isLoading, error, lastError, closeError,
-      submissions, download, step, goPrevStep, setPrivateKey, privateKey,
+      submissions, downloadSubmission, step, goPrevStep, setPrivateKey, privateKey,
     } = this.props;
     return (
       <div>
@@ -99,7 +99,7 @@ export default class Download extends Component {
         {step === 2 && <div className={styles.step0}>
           <List>
             {submissions.map(sub => (
-              <ListItem key={sub.sender} button onClick={() => download(sub)}>
+              <ListItem key={sub.sender} button onClick={() => downloadSubmission(sub)}>
                 <ListItemText primary={sub.sender} secondary={moment(sub.timestamp).format('LLL')} />
               </ListItem>
             ))}

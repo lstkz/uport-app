@@ -29,7 +29,7 @@ export const fetchSubmissions = () => async (dispatch, getState) => {
   dispatch({type: SHOW_LOADING});
   try {
     const result = await api.getChallengeWithSubmissions(challengeId);
-    if (!result.submissions.length)  {
+    if (!result.submissions.length) {
       dispatch({type: SHOW_ERROR, payload: `Challenge "${result.title}" does not have any submissions`});
     } else {
       dispatch({type: CHALLENGE_LOADED, payload: result});
@@ -50,7 +50,7 @@ export const checkKey = () => async (dispatch, getState) => {
   }
 };
 
-export const download = (sub) => async (dispatch, getState) => {
+export const downloadSubmission = (sub) => async (dispatch, getState) => {
   const {privateKey} = getState().download;
   let submissionData;
   try {
@@ -89,7 +89,7 @@ export const actions = {
   setPrivateKey: createAction(SET_PRIVATE_KEY),
   fetchSubmissions,
   checkKey,
-  download,
+  downloadSubmission,
 };
 
 
