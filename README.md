@@ -29,6 +29,9 @@ Solution:
 - It's possible to submit to Topcoder if the website is down. The uPort api must work, blockchain and the service for file uploading (AWS S3).
 
 
+Diagram
+![diagram](docs/diagram.gif)
+
 ## Install
 
 ```bash

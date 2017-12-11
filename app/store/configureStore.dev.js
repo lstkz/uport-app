@@ -51,7 +51,7 @@ const configureStore = (initialState?: counterStateType) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
+    module.hot.accept('../modules', () =>
       store.replaceReducer(require('../modules')) // eslint-disable-line global-require
     );
   }

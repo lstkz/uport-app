@@ -1,3 +1,13 @@
 .container {
   margin-top: 200px;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 300px;
+  text-align: center;
+}
+
+.button {
+  margin: 0 5px;
 }

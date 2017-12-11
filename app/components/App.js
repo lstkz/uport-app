@@ -14,7 +14,6 @@ import withRoot from '../components/withRoot';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 3,
     width: '100%',
   },
   flex: {
@@ -33,7 +32,7 @@ class App extends Component {
   openDrawer = () => this.setState({menuOpen: true});
 
   render() {
-    const {classes, login} = this.props;
+    const {classes, login, user} = this.props;
     return (
       <div className={classes.root}>
         <Drawer open={this.state.menuOpen} onRequestClose={this.closeDrawer}>
@@ -61,13 +60,13 @@ class App extends Component {
         </Drawer>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="contrast" aria-label="Menu" onClick={this.openDrawer}>
+            {user && <IconButton className={classes.menuButton} color="contrast" aria-label="Menu" onClick={this.openDrawer}>
               <MenuIcon/>
-            </IconButton>
+            </IconButton>}
             <Typography type="title" color="inherit" className={classes.flex}>
-              TopCoder blockchain
+              Topcoder blockchain
             </Typography>
-            <Button color="contrast" onClick={login}>Login</Button>
+            {user && <div>Welcome {user.name}</div>}
           </Toolbar>
         </AppBar>
         {this.props.children}
