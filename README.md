@@ -102,5 +102,6 @@ tc.addChallenge("Some challenge", 2, 1612504683, 'MIGJAoGBAM3CosR73CBNcJsLv5E90N
 
 
 ## Verification
-See video <url>.
-Use private key from `private.key`
+Uploading submission (submitter): http://take.ms/yewCl  
+Downloading submission (reviewer): http://take.ms/HfJof
+Use a private key from `private.key`
