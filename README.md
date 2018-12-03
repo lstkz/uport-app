@@ -1,5 +1,7 @@
 # uport-app
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/BetterCallSky/uport-app.svg)](https://greenkeeper.io/)
+
 ## Requirements
 - nodejs v8.9
 - yarn v1.3
